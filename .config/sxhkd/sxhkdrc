@@ -1,0 +1,168 @@
+# changing window gap
+alt + {minus,equal}
+  bspc config window_gap $(( $(bspc config window_gap) {-,+} 5 ))    
+
+alt + 0
+  bspc config window_gap 0
+
+# power button
+super + alt + o
+	bash /home/finley/scripts/powerButtonRofi.sh
+
+# change volume
+super + minus
+	pamixer --decrease 5
+
+super + equal
+	pamixer --increase 5
+
+super + alt + minus
+	pamixer --decrease 1
+
+super + alt + equal
+	pamixer --increase 1
+
+
+# program launcher
+super + space
+	rofi -show drun
+
+# file manager
+super + apostrophe
+   kitty -e ranger
+
+# web browser
+super + semicolon
+	firefox
+
+# opening kitty / tmux
+
+super + Return
+	kitty tmux attach || kitty -e "/home/finley/scripts/DailyTmuxSession.sh"
+
+super + alt + Return
+	kitty -e "/home/finley/scripts/tmux.sh"
+
+super + ctrl + Return
+	kitty -e "/home/finley/scripts/DailyTmuxSession.sh"
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+super + d
+	bash "/home/finley/scripts/run_scripts_rofi.sh"
+
+# close focused node
+super + x
+	bspc node focused -c
+
+# Toggle fullscreen/tiling
+super + f
+    window_name=$(bspc query -T -n $(bspc query -N -n focused)); \
+    if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \                  
+        bspc node focused -t fullscreen; \                                      
+        notify-send -u low -t 1000 "Fullscreen" "$window_name"; \               
+    else \                                                                      
+        bspc node focused -t tiled; \                                           
+        bspc config -n $(bspc query -N -n) border_width 1; \                    
+        notify-send -u low -t 1000 "Tiling" "$window_name"; \                   
+    fi
+
+# toggle tiling/ floating
+super + g
+    window_name=$(bspc query -T -n $(bspc query -N -n focused)); \
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \                  
+        bspc node focused -t floating; \                                      
+        notify-send -u low -t 1000 "Floating" "$window_name"; \               
+    else \                                                                      
+        bspc node focused -t tiled; \                                           
+        bspc config -n $(bspc query -N -n) border_width 1; \                    
+        notify-send -u low -t 1000 "Tiling" "$window_name"; \                   
+    fi
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+super + s
+    bspc node -s $(xorg-choose-window jklioupnm)
+
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# Focus the last desktop
+super + v
+    bspc desktop -f last
+
+# focus the next/previous desktop in the current monitor
+super + {n,p}
+	bspc desktop -f {next, prev}.local
+
+super + alt + {n,p}
+	bspc node -d {next, prev}.local
+
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,alt + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# Move current window to a pre-selected space
+super + ctrl + m
+    bspc node -n last.!automatic
+
+#
+# move/resize
+#
+# todo fix floating tile resize
+#
+
+# # Expand/contract a window by moving one of its side outward/inward
+# super + b : {h,j,k,l}
+#     STEP=20; SELECTION={1,2,3,4}; \
+#     bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+#     bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

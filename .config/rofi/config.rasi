@@ -1,0 +1,18 @@
+configuration {
+    font: "JetBrainsMono Nerd Font Medium 14";
+    line-margin: 2;
+
+    display-drun:    ">";
+}
+
+
+@theme "~/.config/rofi/rofi-glass-fullscreen.rasi"
+
+listview {
+	lines: 10;
+	columns: 1;
+}
+
+window {
+	width: 20%;
+}

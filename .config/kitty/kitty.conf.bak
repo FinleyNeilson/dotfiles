@@ -1,0 +1,8 @@
+font_family JetBrains Mono
+font_size 14.0
+confirm_os_window_close 0
+
+# BEGIN_KITTY_THEME
+# Nord
+include current-theme.conf
+# END_KITTY_THEME
