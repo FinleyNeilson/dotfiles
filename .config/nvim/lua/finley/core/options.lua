@@ -9,7 +9,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+opt.autoindent = false -- copy indent from current line when starting new one
 opt.smartindent = true
 opt.wrap = false
 
@@ -35,6 +35,7 @@ opt.scrolloff = 8
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.conceallevel = 3
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
@@ -56,8 +57,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.swapfile = false
 --opt.undodir will add this eventually omg it fked me before
 --opt.undofile = true
-
-opt.colorcolumn = "80"
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
