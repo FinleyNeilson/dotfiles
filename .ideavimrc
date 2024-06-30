@@ -1,0 +1,80 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+" source
+:map <leader>9 :source ~/.ideavimrc<CR>
+
+""" Plugins  --------------------------------
+set surround
+set NERDTree
+set commentary
+set highlightedyank
+set quickscope
+
+""" Common settings -------------------------
+set showmode
+set relativenumber
+set so=8
+set incsearch
+set nu
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+""" Vim specific mappings
+
+" Move selected lines up/down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Keep yourself centered when jumping around
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Send to the void
+xnoremap <leader>p "_dP
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" delete single character without copying into register
+nnoremap x "_x
+
+" Copy to system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+" Quicker close split
+nnoremap <leader>x :q<CR>
+
+" make space do nothing
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+
+""" IDEA specific mappings
+"""IDEA plugins
+
+""" IDEA actions
+
+map <leader>q <Action>(CloseAllEditorsButActive)
+map <C-n> <Action>(MethodDown)
+map <C-p> <Action>(MethodUp)
+map <leader>sf <Action>(GotoFile)
+map <leader>sc <Action>(GotoClass)
+map <leader>d <Action>(Debug)
+map <leader>rn <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader><CR> <Action>(ToggleDistractionFreeMode)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
