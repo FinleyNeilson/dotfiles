@@ -1,5 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
+export TERM=xterm-256color
 export TERMINAL='kitty'
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
