@@ -1,2 +1,2 @@
-require("finley.core")
-require("finley.lazy")
+require("config.core")
+require("config.lazy")

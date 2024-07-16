@@ -68,7 +68,7 @@ return {
 				["<C-j>"] = "actions.select_split",
 				["<C-t>"] = "actions.select_tab",
 				["<C-p>"] = "actions.preview",
-				["<C-k>"] = "actions.close",
+				["<C-c>"] = "actions.close",
 				["["] = "actions.refresh",
 				["-"] = "actions.parent",
 				["_"] = "actions.open_cwd",
@@ -182,6 +182,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>f", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 	end,
 }
