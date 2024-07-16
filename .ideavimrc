@@ -63,17 +63,17 @@ vnoremap <Space> <Nop>
 """ IDEA actions
 
 map <leader>q <Action>(CloseAllEditorsButActive)
+map <leader>f <Action>(HideAllWindows)
 map <C-n> <Action>(MethodDown)
 map <C-p> <Action>(MethodUp)
 map <leader>sf <Action>(GotoFile)
 map <leader>sc <Action>(GotoClass)
-map <leader>d <Action>(Debug)
+map <leader>d <Action>(Debug
 map <leader>rn <Action>(RenameElement)
 map <leader>c <Action>(Stop)
 map <leader><CR> <Action>(ToggleDistractionFreeMode)
 
 map <leader>s <Action>(SelectInProjectView)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <S-Space> <Action>(GotoNextError)
 
 map <leader>b <Action>(ToggleLineBreakpoint)

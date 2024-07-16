@@ -6,7 +6,7 @@ configuration {
 }
 
 
-@theme "~/.config/rofi/rofi-glass-fullscreen.rasi"
+@theme "~/.config/rofi/rosepine.rasi"
 
 listview {
 	lines: 10;

@@ -38,7 +38,7 @@ super + semicolon
 # opening kitty / tmux
 
 super + Return
-	kitty tmux attach || kitty -e "/home/finley/scripts/DailyTmuxSession.sh"
+	kitty -e "/home/finley/scripts/recentTmuxSession.sh"
 
 super + alt + Return
 	kitty -e "/home/finley/scripts/tmux.sh"
@@ -54,7 +54,7 @@ super + ctrl + Return
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
-super + d
+super + a
 	bash "/home/finley/scripts/run_scripts_rofi.sh"
 
 # close focused node
@@ -102,8 +102,14 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
+# super + {_,shift + }c
+# 	bspc node -f {next,prev}.local.!hidden.window
+
+super + c 
+	bspc node -f next.local.!hidden.window
+
+super + d 
+	bspc node -f prev.local.!hidden.window
 
 # Focus the last desktop
 super + v

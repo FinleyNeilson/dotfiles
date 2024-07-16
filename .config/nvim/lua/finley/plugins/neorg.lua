@@ -17,6 +17,14 @@ return {
 								"<M-CR>",
 								"<cmd>Neorg keybind all core.itero.next-iteration<CR>"
 							)
+
+							local paste_file_path = function()
+								vim.cmd("echo 'Hello'")
+								local url = "file://" .. vim.fn.expand("%:p:h") .. "/"
+								vim.api.nvim_put({ url }, "", true, true)
+							end
+
+							keybinds.remap("norg", "n", ",ip", paste_file_path)
 						end,
 					},
 				},
