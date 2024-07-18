@@ -70,6 +70,13 @@ return {
 			vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename, { desc = "[C]ode [R]ename" })
 			-- Set a vim motion for <Space> + c + <Shift>D to go to where the code/object was declared in the project (class file)
 			vim.keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, { desc = "[C]ode Goto [D]eclaration" })
+
+			-- Diagnostic keymaps
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+			vim.keymap.set("n", "<leader>Q", vim.diagnostic.setqflist)
 		end,
 	},
 }
