@@ -27,5 +27,6 @@ return {
 		}
 
 		alpha.setup(dashboard.opts)
+		vim.keymap.set("n", "<leader>os", "<cmd>:Alpha<cr>", { desc = "Open startpage" })
 	end,
 }
