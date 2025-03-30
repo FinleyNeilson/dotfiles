@@ -21,21 +21,6 @@ return {
                         colorscheme = "rose-pine-main",
                     },
                     {
-                        name = "rose-pine-moon",
-                        colorscheme = "rose-pine-moon",
-                    },
-                    {
-                        name = "rose-pine-prime",
-                        colorscheme = "rose-pine-main",
-                        after = [[
-                                vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
-                                ]],
-                    },
-                    {
                         name = "rose-pine-moon-prime",
                         colorscheme = "rose-pine-moon",
                         after = [[
@@ -51,8 +36,20 @@ return {
                         colorscheme = "oldworld",
                     },
                     {
-                        name = "oldworld-prime",
-                        colorscheme = "oldworld",
+                        name = "everforest-hard",
+                        colorscheme = "everforest",
+                        before = [[
+                                vim.opt.background = "dark"
+                                vim.g.everforest_background = "hard"
+                                ]],
+                    },
+                    {
+                        name = "rose-pine-moon",
+                        colorscheme = "rose-pine-moon",
+                    },
+                    {
+                        name = "rose-pine-prime",
+                        colorscheme = "rose-pine-main",
                         after = [[
                                 vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
                                 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
@@ -62,8 +59,8 @@ return {
                                 ]],
                     },
                     {
-                        name = "kanagawa-paper-prime",
-                        colorscheme = "kanagawa-paper",
+                        name = "oldworld-prime",
+                        colorscheme = "oldworld",
                         after = [[
                                 vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
                                 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
@@ -76,6 +73,10 @@ return {
                         name = "lackluster",
                         colorscheme = "lackluster",
                         before = [[vim.cmd("colorscheme blue")]],
+                    },
+                    {
+                        name = "kanagawa-paper",
+                        colorscheme = "kanagawa-paper",
                     },
                     {
                         name = "kanagawa-wave",
@@ -93,29 +94,8 @@ return {
                                 ]],
                     },
                     {
-                        name = "everforest-hard",
-                        colorscheme = "everforest",
-                        before = [[
-                                vim.opt.background = "dark"
-                                vim.g.everforest_background = "hard"
-                                ]],
-                    },
-                    {
                         name = "gruvbox-material",
                         colorscheme = "gruvbox-material",
-                    },
-                    -- Light Themes
-                    {
-                        name = "kanagawa-lotus",
-                        colorscheme = "kanagawa-lotus",
-                    },
-                    {
-                        name = "everforest-soft-light",
-                        colorscheme = "everforest",
-                        before = [[
-                                vim.opt.background = "light"
-                                vim.g.everforest_background = "soft"
-                                ]],
                     },
                 },
             })

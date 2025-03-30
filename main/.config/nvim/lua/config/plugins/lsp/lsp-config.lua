@@ -45,6 +45,16 @@ return {
 				capabilities = capabilities,
 			})
 
+			vim.diagnostic.config({
+				virtual_text = {
+					prefix = "●",
+				},
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				float = { border = "rounded" },
+			})
+
 			-- Key mappings for LSP functionality
 			vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
 			vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, { desc = "[C]ode Goto [D]efinition" })

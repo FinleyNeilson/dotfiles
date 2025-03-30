@@ -13,7 +13,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Send to the void
 vim.keymap.set({ "v" }, "<leader>d", [["_d]], { desc = "Delete to the void" })
-vim.keymap.set({ "v" }, "<leader>w", [["_dkp]], { desc = "[w]ack it in, sending what its replacing to the void" })
+vim.keymap.set({"v", "n"}, "<leader>p", "\"0p", { desc = "Paste last yank"})
 vim.keymap.set("n", "x", '"_x')
 
 -- System clipboard
@@ -22,12 +22,13 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "copy until end of line to system clipboard" })
 
--- Better splits
-vim.keymap.set("n", "<C-W>,", ":vertical resize -5<CR>")
-vim.keymap.set("n", "<C-W>.", ":vertical resize +5<CR>")
-
--- Insert a black line good for not continuing a comment
-vim.keymap.set("n", "]<Space>", ':<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "\'[1"<CR>')
+-- Insert a blank line good for not continuing a comment
+vim.keymap.set(
+	"n",
+	"]<Space>",
+	':<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "\'[1"<CR>',
+	{ noremap = true, silent = true }
+)
 vim.keymap.set(
 	"n",
 	"[<Space>",
@@ -35,14 +36,28 @@ vim.keymap.set(
 	{ noremap = true, silent = true }
 )
 
-vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+-- Quit the current buffer or Vim
+vim.keymap.set("n", "<C-q>", ":q<CR>", { noremap = true, silent = true, desc = "Quit the current buffer" })
+vim.keymap.set(
+	"n",
+	"<A-q>",
+	":q!<CR>",
+	{ noremap = true, silent = true, desc = "Force quit current buffer without saving" }
+)
 
-vim.keymap.set('n', '<C-q>', ':q<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Space>', ':w<CR>', { noremap = true, silent = true })
+-- Save the current file
+vim.keymap.set("n", "<C-Space>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
 
-vim.keymap.set('n','<leader>;', ':cnext<CR>')
-vim.keymap.set('n','<leader>,', ':cprev<CR>')
-
+-- Navigate through quickfix list
+vim.keymap.set(
+	"n",
+	"<leader>;",
+	":cnext<CR>",
+	{ noremap = true, silent = true, desc = "Go to the next item in the quickfix list" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>,",
+	":cprev<CR>",
+	{ noremap = true, silent = true, desc = "Go to the previous item in the quickfix list" }
+)

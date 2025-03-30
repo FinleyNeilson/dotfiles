@@ -50,23 +50,6 @@ return {
 		},
 	},
 	{
-		"preservim/vim-pencil",
-		lazy = false,
-		config = function()
-			vim.g["pencil#wrapModeDefault"] = "hard"
-			vim.g["pencil#textwidth"] = 80
-
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "markdown",
-				callback = function()
-					vim.schedule(function()
-						vim.cmd("PencilHard")
-					end)
-				end,
-			})
-		end,
-	},
-	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		opts = {
