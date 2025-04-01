@@ -54,7 +54,7 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		opts = {
 			heading = {
-				icons = { "✪ ", "❖ ", "✺ ", "❀ ", "✦ " },
+                icons = { "❶  ", "❷  ", "❸  ", "❹  ", "❺  " },
 			},
 		},
 	},

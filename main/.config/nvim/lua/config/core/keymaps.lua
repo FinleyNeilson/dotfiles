@@ -13,7 +13,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Send to the void
 vim.keymap.set({ "v" }, "<leader>d", [["_d]], { desc = "Delete to the void" })
-vim.keymap.set({"v", "n"}, "<leader>p", "\"0p", { desc = "Paste last yank"})
+vim.keymap.set({ "v", "n" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 vim.keymap.set("n", "x", '"_x')
 
 -- System clipboard
@@ -36,7 +36,6 @@ vim.keymap.set(
 	{ noremap = true, silent = true }
 )
 
--- Quit the current buffer or Vim
 vim.keymap.set("n", "<C-q>", ":q<CR>", { noremap = true, silent = true, desc = "Quit the current buffer" })
 vim.keymap.set(
 	"n",
@@ -46,18 +45,18 @@ vim.keymap.set(
 )
 
 -- Save the current file
-vim.keymap.set("n", "<C-Space>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
+vim.keymap.set("n", "<C-l>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
 
 -- Navigate through quickfix list
 vim.keymap.set(
 	"n",
-	"<leader>;",
+	"<C-j>",
 	":cnext<CR>",
 	{ noremap = true, silent = true, desc = "Go to the next item in the quickfix list" }
 )
 vim.keymap.set(
 	"n",
-	"<leader>,",
+	"<C-k>",
 	":cprev<CR>",
 	{ noremap = true, silent = true, desc = "Go to the previous item in the quickfix list" }
 )

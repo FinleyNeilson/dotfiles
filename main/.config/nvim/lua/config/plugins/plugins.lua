@@ -12,10 +12,10 @@ return {
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		lazy = false,
 
-        config = function ()
-            require("oil").setup()
-            vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        end
+		config = function()
+			require("oil").setup()
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+		end,
 	},
 	{ "folke/which-key.nvim", opts = {} },
 	{

@@ -76,7 +76,7 @@ return {
 
 			-- Diagnostic key mappings
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic floating window" })
-			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open quickfix with diagnostics" })
+			vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open quickfix with diagnostics" })
 		end,
 	},
 }
