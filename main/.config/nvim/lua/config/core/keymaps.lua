@@ -47,16 +47,42 @@ vim.keymap.set(
 -- Save the current file
 vim.keymap.set("n", "<C-l>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
 
--- Navigate through quickfix list
-vim.keymap.set(
-	"n",
-	"<C-j>",
-	":cnext<CR>",
-	{ noremap = true, silent = true, desc = "Go to the next item in the quickfix list" }
-)
-vim.keymap.set(
-	"n",
-	"<C-k>",
-	":cprev<CR>",
-	{ noremap = true, silent = true, desc = "Go to the previous item in the quickfix list" }
-)
+local function smart_qf_nav(cmd)
+  return function()
+
+    local is_loclist = false
+
+
+    for _, win in ipairs(vim.fn.getwininfo()) do
+      if win.loclist == 1 then
+        is_loclist = true
+        break
+      end
+    end
+
+    local final_cmd = is_loclist and cmd:gsub("^c", "l") or cmd
+
+    local ok = pcall(function()
+      vim.cmd(final_cmd)
+    end)
+
+    if not ok then
+      vim.notify(
+        "No more items in the " .. (is_loclist and "location" or "quickfix") .. " list",
+        vim.log.levels.INFO
+      )
+    end
+  end
+end
+
+vim.keymap.set("n", "<C-j>", smart_qf_nav("cnext"), {
+  noremap = true,
+  silent = true,
+  desc = "Go to the next item in loclist or quickfix list",
+})
+
+vim.keymap.set("n", "<C-k>", smart_qf_nav("cprev"), {
+  noremap = true,
+  silent = true,
+  desc = "Go to the previous item in loclist or quickfix list",
+})

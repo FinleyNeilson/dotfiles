@@ -56,27 +56,17 @@ return {
 			})
 
 			-- Key mappings for LSP functionality
-			vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
-			vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, { desc = "[C]ode Goto [D]efinition" })
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ctions" })
-			vim.keymap.set(
-				"n",
-				"<leader>cr",
-				require("telescope.builtin").lsp_references,
-				{ desc = "[C]ode Goto [R]eferences" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>ci",
-				require("telescope.builtin").lsp_implementations,
-				{ desc = "[C]ode Goto [I]mplementations" }
-			)
-			vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename, { desc = "[C]ode [R]ename" })
-			vim.keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, { desc = "[C]ode Goto [D]eclaration" })
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "[l]sp hover documentation" })
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "[Go]to [D]efinition" })
+			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "[l]sp [A]ctions" })
+			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences" })
+			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementations" })
+			vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, { desc = "[L]sp [R]ename" })
 
 			-- Diagnostic key mappings
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic floating window" })
 			vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open quickfix with diagnostics" })
+			vim.keymap.set("n", "<leader>Q", vim.diagnostic.setloclist, { desc = "Open quickfix with diagnostics" })
 		end,
 	},
 }
