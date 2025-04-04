@@ -80,6 +80,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 alias vim='nvim'
+alias ta='tmux a'
+alias ts='tmux new-session -s "main"'
+alias a='ls -a --color'
+alias l='ls -l --color'
+alias la='ls -la --color'
 
 n ()
 {

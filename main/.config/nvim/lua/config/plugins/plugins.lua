@@ -8,12 +8,17 @@ return {
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
 		"stevearc/oil.nvim",
-		opts = {},
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		lazy = false,
 
 		config = function()
-			require("oil").setup()
+			require("oil").setup({
+				keymaps = {
+					["gR"] = "actions.refresh",
+					["<C-l>"] = false,
+				},
+			})
+
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 		end,
 	},
