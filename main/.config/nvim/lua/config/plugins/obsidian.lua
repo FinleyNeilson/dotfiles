@@ -10,8 +10,16 @@ return {
 		opts = {
 			workspaces = {
 				{
-					name = "notes",
+					name = "programming",
 					path = "/mnt/c/Users/finle/notes/programming",
+				},
+				{
+					name = "philosophy",
+					path = "/mnt/c/Users/finle/notes/philosophy",
+				},
+				{
+					name = "personal",
+					path = "/mnt/c/Users/finle/notes/personal",
 				},
 			},
 			templates = {
@@ -54,7 +62,13 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		opts = {
 			heading = {
-                icons = { "❶  ", "❷  ", "❸  ", "❹  ", "❺  " },
+				icons = {
+					"● ",
+					"○ ",
+					"◆ ",
+					"◇ ",
+					"‣ ",
+				},
 			},
 		},
 	},

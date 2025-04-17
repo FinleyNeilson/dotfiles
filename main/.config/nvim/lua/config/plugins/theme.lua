@@ -8,6 +8,8 @@ return {
     { "thesimonho/kanagawa-paper.nvim", lazy = false },
     { "sainnhe/gruvbox-material",       lazy = false },
     { "slugbyte/lackluster.nvim",       lazy = false },
+    { "vague2k/vague.nvim",             lazy = false },
+    { "dasupradyumna/midnight.nvim",    lazy = false },
     {
         "zaldih/themery.nvim",
         lazy = false,
@@ -19,6 +21,21 @@ return {
                     {
                         name = "rose-pine",
                         colorscheme = "rose-pine-main",
+                    },
+                    {
+                        name = "rose-pine-moon",
+                        colorscheme = "rose-pine-moon",
+                    },
+                    {
+                        name = "rose-pine-prime",
+                        colorscheme = "rose-pine-main",
+                        after = [[
+                                vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+                                vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
+                                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+                                vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "none" })
+                                vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
+                                ]],
                     },
                     {
                         name = "rose-pine-moon-prime",
@@ -44,58 +61,11 @@ return {
                                 ]],
                     },
                     {
-                        name = "rose-pine-moon",
-                        colorscheme = "rose-pine-moon",
-                    },
-                    {
-                        name = "rose-pine-prime",
-                        colorscheme = "rose-pine-main",
-                        after = [[
-                                vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
-                                ]],
-                    },
-                    {
-                        name = "oldworld-prime",
-                        colorscheme = "oldworld",
-                        after = [[
-                                vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "none" })
-                                vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
-                                ]],
-                    },
-                    {
-                        name = "lackluster",
-                        colorscheme = "lackluster",
-                        before = [[vim.cmd("colorscheme blue")]],
-                    },
-                    {
-                        name = "kanagawa-paper",
-                        colorscheme = "kanagawa-paper",
-                    },
-                    {
-                        name = "kanagawa-wave",
-                        colorscheme = "kanagawa-wave",
-                    },
-                    {
-                        name = "nordic",
-                        colorscheme = "nordic",
-                    },
-                    {
                         name = "catppuccin-mocha",
                         colorscheme = "catppuccin-mocha",
                         before = [[
                                 vim.opt.background = "dark"
                                 ]],
-                    },
-                    {
-                        name = "gruvbox-material",
-                        colorscheme = "gruvbox-material",
                     },
                 },
             })

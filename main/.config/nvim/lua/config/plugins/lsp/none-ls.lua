@@ -10,10 +10,10 @@ return {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.clang_format.with({
-                    extra_args = { "--style={BasedOnStyle: Google, IndentWidth: 4}" },
+                    extra_args = { "--style={BasedOnStyle: Google}" },
                 }),
                 null_ls.builtins.formatting.markdownlint.with({
-                    extra_args = { "--config", "/home/finley-neilson/.config/nvim/markdownlint.json" },
+                    extra_args = { "--config", "/home/finley/.config/nvim/markdownlint.json" },
                 }),
                 null_ls.builtins.diagnostics.markdownlint.with({
                     diagnostics_format = "#{m} (#{c})",

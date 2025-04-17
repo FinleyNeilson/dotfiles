@@ -116,6 +116,5 @@ n ()
         rm -f "$NNN_TMPFILE" > /dev/null
     }
 }
-# Shell integrations
-# eval "$(fzf --zsh)" Ubuntu is behind needs fzf 0.48 uncomment when ubuntu catches up
+
 eval "$(zoxide init --cmd cd zsh)"

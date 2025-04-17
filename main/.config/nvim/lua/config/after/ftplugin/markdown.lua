@@ -5,6 +5,8 @@ vim.api.nvim_create_autocmd("FileType", {
             return
         end
 
+        -- vim.cmd("colorscheme everforest")
+
         -- Keybindings for Obsidian
         -- Custom keybinging functions
 
@@ -46,8 +48,8 @@ vim.api.nvim_create_autocmd("FileType", {
         -- vim.keymap.set("n", "<leader>o", "<cmd>ObsidianOpen<CR>", { desc = "Open on App", buffer = true })
         vim.keymap.set("n", "<leader>sg", "<cmd>ObsidianSearch<CR>", { desc = "Grep", buffer = true })
         vim.keymap.set("n", "<leader>sf", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Find Files", buffer = true })
-        vim.keymap.set("n", "<leader>n", "<cmd>ObsidianNew<CR>", { desc = "New Note", buffer = true })
-        vim.keymap.set("n", "<leader>co", "<cmd>ObsidianTOC<CR>", { desc = "Table of Contents", buffer = true })
+        -- vim.keymap.set("n", "<leader>n", "<cmd>ObsidianNew<CR>", { desc = "New Note", buffer = true })
+        vim.keymap.set("n", "<leader>cn", "<cmd>ObsidianTOC<CR>", { desc = "Table of Contents", buffer = true })
         vim.keymap.set("n", "<leader>L", "<cmd>ObsidianLinks<CR>", { desc = "Links", buffer = true })
         vim.keymap.set("n", "<leader>b", "<cmd>ObsidianBacklinks<CR>", { desc = "Backlinks", buffer = true })
         vim.keymap.set("n", "<leader>ta", "<cmd>ObsidianTags<CR>", { desc = "Tags", buffer = true })

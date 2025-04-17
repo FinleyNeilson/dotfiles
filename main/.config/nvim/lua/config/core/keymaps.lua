@@ -22,6 +22,8 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "copy until end of line to system clipboard" })
 
+vim.keymap.set('n', '<C-h>', '<C-^>', { noremap = true })
+
 -- Insert a blank line good for not continuing a comment
 vim.keymap.set(
 	"n",
@@ -66,14 +68,19 @@ local function smart_qf_nav(cmd)
       vim.cmd(final_cmd)
     end)
 
-    if not ok then
-      vim.notify(
-        "No more items in the " .. (is_loclist and "location" or "quickfix") .. " list",
-        vim.log.levels.INFO
-      )
-    end
+    -- if not ok then
+    --   vim.notify(
+    --     "No more items in the " .. (is_loclist and "location" or "quickfix") .. " list",
+    --     vim.log.levels.INFO
+    --   )
+    -- end
   end
 end
+
+vim.api.nvim_create_user_command("Lgrep", function(opts)
+  vim.cmd("lvimgrep /" .. opts.args .. "/ %")
+  vim.cmd("lopen")
+end, { nargs = 1 })
 
 vim.keymap.set("n", "<C-j>", smart_qf_nav("cnext"), {
   noremap = true,

@@ -1,6 +1,38 @@
 return {
 	{ "ThePrimeagen/vim-be-good", lazy = true },
 	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+				},
+				sections = {
+					lualine_a = {
+						{
+							"filename",
+							file_status = true,
+							newfile_status = true,
+							symbols = {
+								modified = "●",
+								readonly = "🔒",
+								unnamed = "[No Name]",
+								newfile = "[New]",
+							},
+							color = {},
+						},
+					},
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_x = { "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+			})
+		end,
+	},
+	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},

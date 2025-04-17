@@ -27,5 +27,5 @@ return {
 	},
 
 	{ "nvim-treesitter/playground" }, -- The tree can be toggled using the command :TSPlaygroundToggle
-	{ "nvim-treesitter/nvim-treesitter-context" }, -- keeps the context of what method you are in etc.(The intelij feature)
+	-- { "nvim-treesitter/nvim-treesitter-context" }, -- keeps the context of what method you are in etc.(The intelij feature)
 }

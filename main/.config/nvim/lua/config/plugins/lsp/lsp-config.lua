@@ -36,7 +36,7 @@ return {
 				cmd = {
 					"clangd",
 					"--compile-commands-dir=build",
-					"--fallback-style={BasedOnStyle: Google, IndentWidth: 4}",
+					"--fallback-style={BasedOnStyle: Google}",
 				},
 			})
 
