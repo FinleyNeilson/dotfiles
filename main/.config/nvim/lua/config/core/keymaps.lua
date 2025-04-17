@@ -49,6 +49,12 @@ vim.keymap.set(
 -- Save the current file
 vim.keymap.set("n", "<C-l>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
 
+-- Buffers
+vim.keymap.set("n", "<C-s>", ":bprev<CR>", { noremap = true, silent = true, desc = "Save the current file" })
+vim.keymap.set("n", "<C-f>", ":bnext<CR>", { noremap = true, silent = true, desc = "Save the current file" })
+vim.keymap.set("n", "<C-g>", ":bfirst<CR>", { noremap = true, silent = true, desc = "Save the current file" })
+vim.keymap.set("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true, desc = "Save the current file" })
+
 local function smart_qf_nav(cmd)
   return function()
 
@@ -93,3 +99,11 @@ vim.keymap.set("n", "<C-k>", smart_qf_nav("cprev"), {
   silent = true,
   desc = "Go to the previous item in loclist or quickfix list",
 })
+
+vim.keymap.set("n", "<leader>tc", function()
+  if vim.wo.colorcolumn ~= "" then
+    vim.wo.colorcolumn = ""
+  else
+    vim.wo.colorcolumn = "81"
+  end
+end, { desc = "Toggle colorcolumn at 81" })

@@ -25,6 +25,7 @@ return {
 						},
 					},
 					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = {"buffers"},
 					lualine_x = { "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
@@ -69,7 +70,7 @@ return {
 	{
 		"unblevable/quick-scope",
 		config = function()
-			vim.g.qs_enable = 0
+			vim.g.qs_enable = 1
 			vim.keymap.set("n", "<leader>ts", "<cmd>:QuickScopeToggle<cr>", { desc = "toggle quick scope" })
 		end,
 	},
