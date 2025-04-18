@@ -50,10 +50,12 @@ vim.keymap.set(
 vim.keymap.set("n", "<C-l>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
 
 -- Buffers
-vim.keymap.set("n", "<C-s>", ":bprev<CR>", { noremap = true, silent = true, desc = "Save the current file" })
-vim.keymap.set("n", "<C-f>", ":bnext<CR>", { noremap = true, silent = true, desc = "Save the current file" })
-vim.keymap.set("n", "<C-g>", ":bfirst<CR>", { noremap = true, silent = true, desc = "Save the current file" })
-vim.keymap.set("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true, desc = "Save the current file" })
+vim.keymap.set("n", "<C-s>", ":bprev<CR>", { noremap = true, silent = true, desc = "Buffer previous" })
+vim.keymap.set("n", "<C-g>", ":bnext<CR>", { noremap = true, silent = true, desc = "Buffer next" })
+vim.api.nvim_set_keymap("n", "<C-t>", ":%bd|e#|bd#<CR>", { noremap = true, silent = true, desc = "Delete all buffers except current file"})
+vim.keymap.set("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete current buffer" })
+
+vim.api.nvim_set_keymap("n", "<C-f>", "zz", { noremap = true, silent = true, desc = "Centre"})
 
 local function smart_qf_nav(cmd)
   return function()
@@ -107,3 +109,5 @@ vim.keymap.set("n", "<leader>tc", function()
     vim.wo.colorcolumn = "81"
   end
 end, { desc = "Toggle colorcolumn at 81" })
+
+vim.keymap.set("n", "<leader>og", ":Neogit<CR>", { desc = "[O]pen [N]eogit" })

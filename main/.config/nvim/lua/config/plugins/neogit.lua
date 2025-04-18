@@ -88,7 +88,7 @@ return {
                 -- Default for new branch name prompts
                 initial_branch_name = "",
                 -- Change the default way of opening neogit
-                kind = "tab",
+                kind = "replace",
                 -- Disable line numbers
                 disable_line_numbers = true,
                 -- Disable relative line numbers
