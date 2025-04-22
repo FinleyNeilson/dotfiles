@@ -5,7 +5,10 @@ vim.api.nvim_create_autocmd("FileType", {
 			return
 		end
 
-		vim.cmd("colorscheme everforest")
+        vim.opt_local.colorcolumn = ""
+        vim.g.qs_enable = 0
+
+		vim.cmd("colorscheme gruvbox-material")
 		require("lualine").setup({})
 
 		-- Keybindings for Obsidian
@@ -51,6 +54,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "<leader>sf", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Find Files", buffer = true })
 		-- vim.keymap.set("n", "<leader>n", "<cmd>ObsidianNew<CR>", { desc = "New Note", buffer = true })
 		vim.keymap.set("n", "<leader>cn", "<cmd>ObsidianTOC<CR>", { desc = "Table of Contents", buffer = true })
+		vim.keymap.set("n", "<leader>rn", "<cmd>ObsidianRename<CR>", { desc = "Rename", buffer = true })
 		vim.keymap.set("n", "<leader>L", "<cmd>ObsidianLinks<CR>", { desc = "Links", buffer = true })
 		vim.keymap.set("n", "<leader>b", "<cmd>ObsidianBacklinks<CR>", { desc = "Backlinks", buffer = true })
 		vim.keymap.set("n", "<leader>ta", "<cmd>ObsidianTags<CR>", { desc = "Tags", buffer = true })

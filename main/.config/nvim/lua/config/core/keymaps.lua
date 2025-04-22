@@ -1,28 +1,24 @@
 -- set leader key to space
 vim.g.mapleader = " "
 
--- move all of selected text together
-vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
-
 -- Keep yourself centered when jumping around
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Send to the void
 vim.keymap.set({ "v" }, "<leader>d", [["_d]], { desc = "Delete to the void" })
-vim.keymap.set({ "v", "n" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 vim.keymap.set("n", "x", '"_x')
 
+-- Paste last yank
+vim.keymap.set({ "v", "n" }, "<leader>p", '"0p', { desc = "Paste last yank" })
+
 -- System clipboard
--- vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "paste from system clipboard" })
--- vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "paste above from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "copy until end of line to system clipboard" })
-
-vim.keymap.set('n', '<C-h>', '<C-^>', { noremap = true })
 
 -- Insert a blank line good for not continuing a comment
 vim.keymap.set(
@@ -38,6 +34,12 @@ vim.keymap.set(
 	{ noremap = true, silent = true }
 )
 
+-- move all of selected text together
+vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
+
+-- Quit the current file
+
 vim.keymap.set("n", "<C-q>", ":q<CR>", { noremap = true, silent = true, desc = "Quit the current buffer" })
 vim.keymap.set(
 	"n",
@@ -49,12 +51,15 @@ vim.keymap.set(
 -- Save the current file
 vim.keymap.set("n", "<C-l>", ":w<CR>", { noremap = true, silent = true, desc = "Save the current file" })
 
--- Buffers
+-- Buffers and file navigation
+
+vim.keymap.set('n', '<C-h>', '<C-^>', { noremap = true })
 vim.keymap.set("n", "<C-s>", ":bprev<CR>", { noremap = true, silent = true, desc = "Buffer previous" })
 vim.keymap.set("n", "<C-g>", ":bnext<CR>", { noremap = true, silent = true, desc = "Buffer next" })
 vim.api.nvim_set_keymap("n", "<C-t>", ":%bd|e#|bd#<CR>", { noremap = true, silent = true, desc = "Delete all buffers except current file"})
 vim.keymap.set("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete current buffer" })
 
+-- Center the screen
 vim.api.nvim_set_keymap("n", "<C-f>", "zz", { noremap = true, silent = true, desc = "Centre"})
 
 local function smart_qf_nav(cmd)
@@ -85,11 +90,6 @@ local function smart_qf_nav(cmd)
   end
 end
 
-vim.api.nvim_create_user_command("Lgrep", function(opts)
-  vim.cmd("lvimgrep /" .. opts.args .. "/ %")
-  vim.cmd("lopen")
-end, { nargs = 1 })
-
 vim.keymap.set("n", "<C-j>", smart_qf_nav("cnext"), {
   noremap = true,
   silent = true,
@@ -102,6 +102,11 @@ vim.keymap.set("n", "<C-k>", smart_qf_nav("cprev"), {
   desc = "Go to the previous item in loclist or quickfix list",
 })
 
+vim.api.nvim_create_user_command("Lgrep", function(opts)
+  vim.cmd("lvimgrep /" .. opts.args .. "/ %")
+  vim.cmd("lopen")
+end, { nargs = 1 })
+
 vim.keymap.set("n", "<leader>tc", function()
   if vim.wo.colorcolumn ~= "" then
     vim.wo.colorcolumn = ""
@@ -109,5 +114,3 @@ vim.keymap.set("n", "<leader>tc", function()
     vim.wo.colorcolumn = "81"
   end
 end, { desc = "Toggle colorcolumn at 81" })
-
-vim.keymap.set("n", "<leader>og", ":Neogit<CR>", { desc = "[O]pen [N]eogit" })

@@ -61,6 +61,10 @@ return {
                                 ]],
                     },
                     {
+                        name = "gruvbox",
+                        colorscheme = "gruvbox-material",
+                    },
+                    {
                         name = "catppuccin-mocha",
                         colorscheme = "catppuccin-mocha",
                         before = [[
