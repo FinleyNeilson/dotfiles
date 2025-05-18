@@ -14,6 +14,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.deprecate = function() end
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {

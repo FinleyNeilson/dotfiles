@@ -7,9 +7,9 @@ vim.api.nvim_create_autocmd("FileType", {
 
         vim.opt_local.colorcolumn = ""
         vim.g.qs_enable = 0
-
-		vim.cmd("colorscheme gruvbox-material")
-		require("lualine").setup({})
+        vim.bo.tabstop = 2
+        vim.bo.softtabstop = 2
+        vim.bo.shiftwidth = 2
 
 		-- Keybindings for Obsidian
 		-- Custom keybinging functions

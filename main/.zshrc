@@ -109,7 +109,7 @@ n ()
 
     # The command builtin allows one to alias nnn to n, if desired, without
     # making an infinitely recursive alias
-    command nnn "$@"
+    command nnn -e "$@"
 
     [ ! -f "$NNN_TMPFILE" ] || {
         . "$NNN_TMPFILE"
@@ -118,3 +118,6 @@ n ()
 }
 
 eval "$(zoxide init --cmd cd zsh)"
+
+# Created by `pipx` on 2025-05-14 22:03:29
+export PATH="$PATH:/home/finley/.local/bin"
