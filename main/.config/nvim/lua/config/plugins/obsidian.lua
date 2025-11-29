@@ -60,18 +60,8 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		opts = {
-			heading = {
-				sign = false,
-				-- backgrounds = {},
-				icons = {
-					"● ",
-					"○ ",
-					"◆ ",
-					"◇ ",
-					"‣ ",
-				},
-			},
-		},
+        config = function ()
+            require("config.modules.render_config").config()
+        end
 	},
 }

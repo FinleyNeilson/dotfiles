@@ -8,6 +8,7 @@ return {
 			local actions = require("telescope.actions")
 			require("telescope").setup({
 				vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[s]earch [f]iles}" }),
+				vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "[s]earch [s]tructure}" }),
 				vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch [g]rep}" }),
 				vim.keymap.set("n", "<leader>sG", builtin.current_buffer_fuzzy_find, { desc = "[s]earch [G]rep in the curreent buffer}" }),
 				vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[s]earch [b]uffers}" }),

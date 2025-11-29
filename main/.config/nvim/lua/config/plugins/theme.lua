@@ -10,6 +10,8 @@ return {
 	{ "slugbyte/lackluster.nvim", lazy = false },
 	{ "vague2k/vague.nvim", lazy = false },
 	{ "dasupradyumna/midnight.nvim", lazy = false },
+	{ "webhooked/kanso.nvim", lazy = false },
+	{ "metalelf0/black-metal-theme-neovim", lazy = false },
 	{
 		"zaldih/themery.nvim",
 		lazy = false,
@@ -39,21 +41,32 @@ return {
                     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
                     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", ctermbg = "none" })
                     vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
+                    vim.api.nvim_set_hl(0, "CursorLine", { bg = "none", ctermbg = "none" })
+                    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none", ctermbg = "none" })
+                    vim.opt.cursorline = false
                 ]]
 			end
 
 			require("themery").setup({
-				livePreview = true, -- Apply theme while picking. Default to true.
+				livePreview = true,
 				themes = {
-					-- Dark Themes
+					{
+						name = "kanso",
+						colorscheme = "kanso-zen",
+						after = quickscope_highlight("#C34043", "#DCA561"),
+					},
 					{
 						name = "rose-pine",
 						colorscheme = "rose-pine-main",
-					},
-					{
-						name = "rose-pine-moon-prime",
-						colorscheme = "rose-pine-moon",
-						after = transparent_background() .. quickscope_highlight("#9ccfd8", "#c4a7e7"),
+						before = [[
+                                                   require("rose-pine").setup({
+                                                       styles = {
+                                                           bold = false,
+                                                           italic = false,
+                                                       },
+                                                   })
+                                               ]],
+						after = quickscope_highlight("#9ccfd8", "#c4a7e7"),
 					},
 					{
 						name = "oldworld",
@@ -61,23 +74,38 @@ return {
 						after = quickscope_highlight("#E6B99D", "#90B99F"),
 					},
 					{
-						name = "catppuccin-mocha",
-						colorscheme = "catppuccin-mocha",
+						name = "kanagawa",
+						colorscheme = "kanagawa-paper-ink",
+						after = quickscope_highlight("#A292A3", "#C4B28A"),
+					},
+					{
+						name = "rose-pine-moon-prime",
+						colorscheme = "rose-pine-moon",
 						before = [[
-                                     vim.opt.background = "dark"
-                                 ]],
+                                    require("rose-pine").setup({
+                                        styles = {
+                                            bold = false,
+                                            italic = false,
+                                        },
+                                    })
+                                ]],
+						after = transparent_background() .. quickscope_highlight("#9ccfd8", "#c4a7e7"),
+					},
+					{
+						name = "catppuccin-mocha-prime",
+						colorscheme = "catppuccin-mocha",
+						after = transparent_background() .. quickscope_highlight("#74c7ec", "#eba0ac"),
 					},
 					{
 						name = "everforest-hard",
 						colorscheme = "everforest",
 						before = [[
-                                vim.opt.background = "dark"
-                                vim.g.everforest_background = "hard"
+                        vim.opt.background = "dark"
+                        vim.g.everforest_background = "hard"
+                        ]],
+						after = [[
+                                require("config.modules.render_config").config()
                                 ]],
-					},
-					{
-						name = "gruvbox",
-						colorscheme = "gruvbox-material",
 					},
 				},
 			})

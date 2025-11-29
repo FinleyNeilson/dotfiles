@@ -7,5 +7,8 @@
   "line-length": {
     "code_blocks": false,
     "line_length": 80
+  },
+  "no-multiple-blanks": {
+    "maximum": 2
   }
 }

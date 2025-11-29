@@ -2,6 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 export TERM=xterm-256color
 export TERMINAL='kitty'
+export PATH=$PATH:/snap/bin
+export PATH="$HOME/go/bin:$PATH"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -33,12 +35,7 @@ zinit light MichaelAquilina/zsh-you-should-use
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -121,3 +118,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Created by `pipx` on 2025-05-14 22:03:29
 export PATH="$PATH:/home/finley/.local/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

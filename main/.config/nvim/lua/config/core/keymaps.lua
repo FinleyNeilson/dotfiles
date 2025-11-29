@@ -10,6 +10,7 @@ vim.keymap.set("n", "x", '"_x')
 
 -- Paste last yank
 vim.keymap.set({ "v", "n" }, "<leader>p", '"0p', { desc = "Paste last yank" })
+vim.keymap.set({ "v", "n" }, "<leader>P", '"0P', { desc = "Paste last yank" })
 
 -- System clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
@@ -36,7 +37,7 @@ vim.keymap.set('n', '<C-h>', '<C-^>', { noremap = true })
 vim.keymap.set("n", "<C-s>", ":bprev<CR>", { noremap = true, silent = true, desc = "Buffer previous" })
 vim.keymap.set("n", "<C-g>", ":bnext<CR>", { noremap = true, silent = true, desc = "Buffer next" })
 vim.api.nvim_set_keymap("n", "<C-t>", ":%bd|e#|bd#<CR>", { noremap = true, silent = true, desc = "Delete all buffers except current file"})
-vim.keymap.set("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete current buffer" })
+-- vim.keymap.set("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete current buffer" })
 
 -- Center the screen
 vim.api.nvim_set_keymap("n", "<C-f>", "zz", { noremap = true, silent = true, desc = "Centre"})
@@ -62,13 +63,13 @@ local function smart_qf_nav(cmd)
   end
 end
 
-vim.keymap.set("n", "<C-j>", smart_qf_nav("cnext"), {
+vim.keymap.set("n", "<leader>j", smart_qf_nav("cnext"), {
   noremap = true,
   silent = true,
   desc = "Go to the next item in loclist or quickfix list",
 })
 
-vim.keymap.set("n", "<C-k>", smart_qf_nav("cprev"), {
+vim.keymap.set("n", "<leader>k", smart_qf_nav("cprev"), {
   noremap = true,
   silent = true,
   desc = "Go to the previous item in loclist or quickfix list",

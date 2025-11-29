@@ -20,13 +20,19 @@ return {
                     "markdown",
                     "markdown_inline",
                     "sql",
+                    "go",
+                    "glsl",
+                    "latex",
                 },
                 sync_install = false,
                 highlight = {
                     enable = true,
                     disable = { "latex" },
                 },
-                indent = { enable = true },
+                indent = { 
+                    enable = true,
+                    disable = { "html" },
+                },
             })
         end,
     },
