@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+-- QOL
+opt.updatetime = 250
+opt.timeoutlen = 300
+opt.completeopt = "menu,menuone,noselect"
+
 -- line numbers
 opt.relativenumber = true
 opt.number = true
@@ -15,6 +20,8 @@ opt.wrap = false
 
 -- Save undo history
 opt.undofile = true
+opt.undolevels = 10000
+opt.undoreload = 10000
 
 -- search settings
 opt.ignorecase = true
@@ -24,26 +31,25 @@ opt.incsearch = true
 
 -- cursor line
 opt.cursorline = true
-opt.scrolloff = 8
+opt.scrolloff = 6
 
 -- appearance
 opt.guicursor = ""
+vim.opt.fillchars = { eob = " " }
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.colorcolumn = "81"
-opt.conceallevel = 3
+opt.conceallevel = 0 -- No concealing
 
 -- split windows
 opt.splitright = true
 opt.splitbelow = true
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
-})
+-- Persistent undo configuration
+local undodir = vim.fn.stdpath("config") .. "/undo"
+if vim.fn.isdirectory(undodir) == 0 then
+	vim.fn.mkdir(undodir, "p")
+end
+
+vim.opt.undofile = true
+vim.opt.undodir = undodir

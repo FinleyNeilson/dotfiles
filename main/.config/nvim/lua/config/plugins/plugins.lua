@@ -8,6 +8,31 @@ return {
 		end,
 	},
 	{
+		"chrisgrieser/nvim-origami",
+		ft = "norg",
+		opts = {
+			foldtext = {
+				lineCount = {
+					template = " %d",
+				},
+			},
+		},
+	},
+	{
+		"luukvbaal/statuscol.nvim",
+		ft = "norg",
+		config = function()
+			local builtin = require("statuscol.builtin")
+			require("statuscol").setup({
+				relculright = true,
+				segments = {
+					{ text = { builtin.lnumfunc, ' ' }, click = "v:lua.ScLa" },
+					{ text = { builtin.foldfunc, ' ' }, click = "v:lua.ScFa" },
+				},
+			})
+		end,
+	},
+	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
@@ -24,6 +49,13 @@ return {
 					["gR"] = "actions.refresh",
 					["<C-l>"] = false,
 				},
+				columns = {
+					"icon",
+					-- "permissions",
+					"size",
+					-- "mtime",
+				},
+				skip_confirm_for_simple_edits = true,
 			})
 
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -54,5 +86,24 @@ return {
 		config = true,
 		-- use opts = {} for passing setup options
 		-- this is equivalent to setup({}) function
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
+			require("ibl").setup({
+				enabled = false,
+				indent = {
+					char = "│", -- or "│", "┊", "┆", "¦", "╎", "▏"
+				},
+				scope = {
+					enabled = true,
+					show_start = true,
+					show_end = true,
+				},
+			})
+
+			vim.keymap.set("n", "<leader>tg", "<cmd>IBLToggle<CR>", { desc = "Toggle indent guides" })
+		end,
 	},
 }

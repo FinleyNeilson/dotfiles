@@ -19,12 +19,19 @@ return {
 					"html",
 					"cssls",
 					"gopls",
-                    "jsonls",
+					"jsonls",
+					"texlab",
 				},
 				handlers = {
 					function(server_name)
 						require("lspconfig")[server_name].setup({
 							capabilities = require("cmp_nvim_lsp").default_capabilities(),
+						})
+					end,
+					["ts_ls"] = function()
+						require("lspconfig").ts_ls.setup({
+							capabilities = require("cmp_nvim_lsp").default_capabilities(),
+							filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 						})
 					end,
 
@@ -48,11 +55,11 @@ return {
 					["clangd"] = function()
 						require("lspconfig").clangd.setup({
 							capabilities = require("cmp_nvim_lsp").default_capabilities(),
-							cmd = {
-								"clangd",
-								"--compile-commands-dir=build",
-								"--fallback-style={BasedOnStyle: Google}",
-							},
+							-- cmd = {
+							-- 	"clangd",
+							-- 	"--compile-commands-dir=build",
+							-- 	"--fallback-style={BasedOnStyle: Google}",
+							-- },
 						})
 					end,
 				},
