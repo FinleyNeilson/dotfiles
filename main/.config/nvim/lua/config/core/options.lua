@@ -38,7 +38,7 @@ opt.guicursor = ""
 vim.opt.fillchars = { eob = " " }
 opt.termguicolors = true
 opt.signcolumn = "yes"
-opt.colorcolumn = "81"
+opt.colorcolumn = ""
 opt.conceallevel = 0 -- No concealing
 
 -- split windows
@@ -46,10 +46,11 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Persistent undo configuration
-local undodir = vim.fn.stdpath("config") .. "/undo"
+local undodir = vim.fn.stdpath("state") .. "/undo" -- This is actually just the default location
 if vim.fn.isdirectory(undodir) == 0 then
 	vim.fn.mkdir(undodir, "p")
 end
 
 vim.opt.undofile = true
 vim.opt.undodir = undodir
+vim.opt.undolevels = 1000000

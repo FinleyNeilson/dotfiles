@@ -12,7 +12,7 @@ return {
             "echasnovski/mini.pick", -- optional
         },
         config = function()
-            vim.keymap.set("n", "<leader>og", ":Neogit<CR>", { desc = "[O]pen [N]eogit" })
+            vim.keymap.set("n", "<leader>og", ":Neogit<CR>", { desc = "[o]pen Neo[g]it" })
             local neogit = require("neogit")
 
             neogit.setup({

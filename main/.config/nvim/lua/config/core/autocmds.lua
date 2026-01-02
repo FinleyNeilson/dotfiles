@@ -26,3 +26,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.b.qs_local_disable = 1
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "alpha",
+	callback = function()
+		vim.b.qs_local_disable = 1
+	end,
+})

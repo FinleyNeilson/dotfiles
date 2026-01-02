@@ -8,31 +8,6 @@ return {
 		end,
 	},
 	{
-		"chrisgrieser/nvim-origami",
-		ft = "norg",
-		opts = {
-			foldtext = {
-				lineCount = {
-					template = " %d",
-				},
-			},
-		},
-	},
-	{
-		"luukvbaal/statuscol.nvim",
-		ft = "norg",
-		config = function()
-			local builtin = require("statuscol.builtin")
-			require("statuscol").setup({
-				relculright = true,
-				segments = {
-					{ text = { builtin.lnumfunc, ' ' }, click = "v:lua.ScLa" },
-					{ text = { builtin.foldfunc, ' ' }, click = "v:lua.ScFa" },
-				},
-			})
-		end,
-	},
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},

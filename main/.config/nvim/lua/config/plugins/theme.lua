@@ -84,7 +84,7 @@ return {
                                     require("rose-pine").setup({
                                         dim_inactive_windows = false,
                                         styles = {
-                                            bold = false,
+                                            bold = true,
                                             italic = false,
                                         },
                                     })
@@ -107,6 +107,16 @@ return {
 						after = quickscope_highlight("#E6B99D", "#90B99F"),
 					},
 					{
+						name = "kanagawa",
+						colorscheme = "kanagawa-paper-ink",
+						after = quickscope_highlight("#A292A3", "#C4B28A"),
+					},
+					{
+						name = "hojicha",
+						colorscheme = "hojicha",
+						after = quickscope_highlight("#808796", "#8bab85"),
+					},
+					{
 						name = "rose-pine-moon",
 						colorscheme = "rose-pine-moon",
 						before = [[
@@ -119,16 +129,6 @@ return {
                                     })
                                 ]],
 						after = quickscope_highlight("#9ccfd8", "#c4a7e7"),
-					},
-					{
-						name = "kanagawa",
-						colorscheme = "kanagawa-paper-ink",
-						after = quickscope_highlight("#A292A3", "#C4B28A"),
-					},
-					{
-						name = "hojicha",
-						colorscheme = "hojicha",
-						after = quickscope_highlight("#808796", "#8bab85"),
 					},
 					{
 						name = "nord",

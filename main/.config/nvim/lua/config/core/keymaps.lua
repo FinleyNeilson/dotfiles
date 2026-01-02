@@ -47,7 +47,7 @@ vim.api.nvim_set_keymap("n", "<C-l>", "zz", { noremap = true, silent = true, des
 -- Better word replacement - pre-fills current word
 vim.keymap.set(
 	"n",
-	"<leader>sr",
+	"<leader>s.",
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "[s]earch and [R]eplace" }
 )

@@ -15,7 +15,8 @@ return {
 				vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[s]earch [h]elp" }),
 				vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" }),
                 vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[s]earch [k]eymaps" }),
-                vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = "[s]earch [.]recent files" }),
+                -- vim.keymap.set("n", "<leader>sr", builtin.oldfiles, { desc = "[s]earch [.]recent files" }),
+                vim.keymap.set("n", "<leader>sr", ":Telescope oldfiles cwd_only=true<CR>", { desc = "[s]earch [r]ecent" }),
 				vim.keymap.set("n", "<leader>spp", builtin.planets, { desc = "[p]ee [p]ee" }),
 				defaults = {
 					mappings = {

@@ -1,10 +1,17 @@
 local M = {}
 
+-- { left = "▓▒░", right = "░▒▓" },
+-- { left = "", right = "░▒▓" },
+-- { left = "", right = "" },
+-- { left = "", right = "" },
+
 M.config = function()
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
-			component_separators = "",
+			component_separators = { left = "", right = "" },
+			-- section_separators = { left = "▓▒░", right = "░▒▓" },
+			-- section_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 		},
 		sections = {
@@ -34,10 +41,10 @@ M.config = function()
 			},
 			lualine_z = {
 				{
+					separator = { left = "", right = "" },
 					function()
 						return os.date("%I:%M")
 					end,
-					separator = { left = "",right = "" },
 				},
 			},
 		},
