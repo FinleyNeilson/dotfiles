@@ -2,8 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
 
 -- Send to the void
 vim.keymap.set({ "v" }, "<leader>d", [["_d]], { desc = "Delete to the void" })

@@ -81,4 +81,10 @@ return {
 			vim.keymap.set("n", "<leader>tg", "<cmd>IBLToggle<CR>", { desc = "Toggle indent guides" })
 		end,
 	},
+	{
+		"olrtg/nvim-emmet",
+		config = function()
+			vim.keymap.set({ "n", "v" }, "<leader>w", require("nvim-emmet").wrap_with_abbreviation)
+		end,
+	},
 }

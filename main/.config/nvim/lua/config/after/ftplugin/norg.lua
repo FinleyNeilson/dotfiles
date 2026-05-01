@@ -20,12 +20,28 @@ vim.api.nvim_create_autocmd("FileType", {
 		}
 		vim.wo.foldcolumn = "1"
 
-		vim.keymap.set("n", "Q", "o<ESC>kO<ESC>jgqipi<ESC>{dd}ddk", { silent = true, noremap = true, buffer = true })
-		vim.keymap.set("n", "<leader>q", "gqipi<ESC>", { silent = true, noremap = true, buffer = true })
+		vim.keymap.set("n", "<localleader>o", "o<CR><ESC>O", { silent = true, noremap = true, buffer = true })
+		vim.keymap.set("n", "Q", "o<ESC>kO<ESC>jgqipi<ESC>{dd}ddk^", { silent = true, noremap = true, buffer = true })
+		vim.keymap.set("n", "<leader>q", "gqipi<ESC>^", { silent = true, noremap = true, buffer = true })
+		vim.keymap.set("n", "<leader>l", "Bi{<Esc>Ea}<Esc>B", { silent = true, noremap = true, buffer = true })
 		vim.keymap.set("x", "Q", "gqi<ESC>", { silent = true, noremap = true, buffer = true })
-		vim.keymap.set("n", "<leader>d", "za", { buffer = true, nowait = true })
+		vim.keymap.set("n", "<leader><CR>", "ggVG=", { buffer = true, nowait = true })
+		vim.keymap.set("n", "<C-j>", "za", { buffer = true, nowait = true })
+		vim.keymap.set("n", "<leader><C-j>", "zA", { buffer = true, nowait = true })
+		vim.keymap.set("n", "<C-k>", "zr", { buffer = true, nowait = true })
 		vim.keymap.set("i", "<C-l>", "<Plug>(neorg.itero.next-iteration)", { buffer = true })
 		vim.keymap.set("n", "<leader>co", "<Plug>(neorg.looking-glass.magnify-code-block)", { buffer = true })
-		vim.keymap.set("n", "<leader>oj", ":Neorg journal today<CR>", { buffer = true, desc = "[o]pen today's neorg [j]ournal" })
+		vim.keymap.set(
+			"n",
+			"<leader>oj",
+			":Neorg journal today<CR>",
+			{ buffer = true, desc = "[o]pen today's neorg [j]ournal" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>oi",
+			":Neorg index<CR>",
+			{ buffer = true, desc = "[o]pen today's neorg [j]ournal" }
+		)
 	end,
 })

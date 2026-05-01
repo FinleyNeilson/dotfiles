@@ -13,8 +13,11 @@ return {
 	{ "dasupradyumna/midnight.nvim", lazy = false },
 	{ "webhooked/kanso.nvim", lazy = false },
 	{ "metalelf0/black-metal-theme-neovim", lazy = false },
+	{ "cideM/yui", lazy = false },
+	{ "aikhe/fleur.nvim", lazy = false },
+	{ "maxmx03/solarized.nvim", lazy = false },
 	{
-		"cdmill/neomodern.nvim",
+		"cdmill/neomodern.nvim", -- iceclimber | gyokuro | hojicha | roseprime
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -91,70 +94,86 @@ return {
                                 ]],
 						after = transparent_background() .. quickscope_highlight("#9ccfd8", "#c4a7e7"),
 					},
-					{
-						name = "catppuccin-mocha-prime",
-						colorscheme = "catppuccin-mocha",
-						after = transparent_background() .. quickscope_highlight("#74c7ec", "#eba0ac"),
-					},
-					{
-						name = "kanso",
-						colorscheme = "kanso-zen",
-						after = quickscope_highlight("#C34043", "#DCA561"),
-					},
+					-- {
+					-- 	name = "kanso",
+					-- 	colorscheme = "kanso-zen",
+					-- 	after = quickscope_highlight("#C34043", "#DCA561"),
+					-- },
 					{
 						name = "oldworld",
 						colorscheme = "oldworld",
 						after = quickscope_highlight("#E6B99D", "#90B99F"),
 					},
-					{
-						name = "kanagawa",
-						colorscheme = "kanagawa-paper-ink",
-						after = quickscope_highlight("#A292A3", "#C4B28A"),
-					},
-					{
-						name = "hojicha",
-						colorscheme = "hojicha",
-						after = quickscope_highlight("#808796", "#8bab85"),
-					},
+					-- {
+					-- 	name = "kanagawa",
+					-- 	colorscheme = "kanagawa-paper-ink",
+					-- 	after = quickscope_highlight("#A292A3", "#C4B28A"),
+					-- },
+					-- {
+					-- 	name = "hojicha",
+					-- 	colorscheme = "hojicha",
+					-- 	after = quickscope_highlight("#808796", "#8bab85"),
+					-- },
+					-- {
+					-- 	name = "roseprime",
+					-- 	colorscheme = "roseprime",
+					-- 	after = quickscope_highlight("#9ccfd8", "#c4a7e7"),
+					-- },
 					{
 						name = "rose-pine-moon",
 						colorscheme = "rose-pine-moon",
 						before = [[
-                                    require("rose-pine").setup({
-                                        dim_inactive_windows = false,
-                                        styles = {
-                                            bold = true,
-                                            italic = false,
-                                        },
-                                    })
-                                ]],
+                                   require("rose-pine").setup({
+                                       dim_inactive_windows = false,
+                                       styles = {
+                                           bold = true,
+                                           italic = false,
+                                       },
+                                   })
+                               ]],
 						after = quickscope_highlight("#9ccfd8", "#c4a7e7"),
 					},
-					{
-						name = "nord",
-						colorscheme = "nord",
-						before = [[
-                                    vim.g.nord_italic = true
-                                    require('nord').set()
-                                ]],
-						after = quickscope_highlight("#88C0D0", "#5E81AC"),
-					},
-					{
-						name = "everforest-hard",
-						colorscheme = "everforest",
-						before = [[
-                        vim.opt.background = "dark"
-                        vim.g.everforest_background = "hard"
-                        ]],
-						after = [[
-                                require("config.modules.render_config").config()
-                                ]],
-					},
+					-- {
+					-- 	name = "catppuccin-mocha",
+					-- 	colorscheme = "catppuccin-mocha",
+					-- 	after = quickscope_highlight("#74c7ec", "#eba0ac"),
+					-- },
+					-- {
+					-- 	name = "nord",
+					-- 	colorscheme = "nord",
+					-- 	before = [[
+					--                                vim.g.nord_italic = false
+					--                                vim.g.nord_bold = false
+					--                                require('nord').set()
+					--                            ]],
+					-- 	after = quickscope_highlight("#88C0D0", "#5E81AC"),
+					-- },
+					-- {
+					-- 	name = "everforest-hard",
+					-- 	colorscheme = "everforest",
+					-- 	before = [[
+					--                    vim.opt.background = "dark"
+					--                    vim.g.everforest_background = "hard"
+					--                    ]],
+					-- 	after = [[
+					--                            require("config.modules.render_config").config()
+					--                            ]],
+					-- },
 					{
 						name = "gruvbox",
 						colorscheme = "gruvbox-material",
 						after = quickscope_highlight("#8ec07c", "#83a598"),
 					},
+					-- {
+					-- 	name = "yui_dark",
+					-- 	colorscheme = "yui_dark",
+					--                    after = quickscope_highlight("#70cf92", "#cfb787"),
+					-- },
+					-- {
+					-- 	name = "yui_light",
+					-- 	colorscheme = "yui_light",
+					-- 	after = quickscope_highlight("#346e27", "#b17900"),
+					-- },
 				},
 			})
 		end,

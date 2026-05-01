@@ -36,17 +36,30 @@ M.config = function()
 			lualine_c = {},
 			lualine_x = {},
 			lualine_y = {
-				{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-				{ "location", padding = { left = 0, right = 1 } },
+					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+					{ "location", padding = { left = 0, right = 1 } },
 			},
 			lualine_z = {
 				{
+                    "filetype",
+                    icon_only = true,
 					separator = { left = "", right = "" },
-					function()
-						return os.date("%I:%M")
-					end,
 				},
 			},
+		},
+		inactive_sections = {
+			lualine_c = {
+				{
+					"filename",
+					symbols = {
+						modified = "●",
+						readonly = "◎",
+						unnamed = "∅",
+						newfile = "+",
+					},
+				},
+			},
+			lualine_x = { "location" },
 		},
 	})
 end

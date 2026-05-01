@@ -7,6 +7,7 @@ return {
 			require("neorg").setup({
 				load = {
 					["core.defaults"] = {},
+					["core.export"] = {},
 					["core.concealer"] = {
 						config = {
 							icon_preset = "basic", -- basic varied diamond
@@ -47,18 +48,23 @@ return {
 				},
 			})
 		end,
-	},
-	{
-		"chrisgrieser/nvim-origami",
-		ft = "norg",
-		opts = {
-			foldtext = {
-				lineCount = {
-					template = " %d",
-				},
-			},
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-neorg/tree-sitter-norg" }, -- Pulls parser directly
+			{ "nvim-neorg/tree-sitter-norg-meta" }, -- Pulls meta parser directly
 		},
 	},
+	-- {
+	-- 	"chrisgrieser/nvim-origami",
+	-- 	ft = "norg",
+	-- 	opts = {
+	-- 		foldtext = {
+	-- 			lineCount = {
+	-- 				template = " %d",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"luukvbaal/statuscol.nvim",
 		ft = "norg",

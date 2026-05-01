@@ -83,6 +83,8 @@ alias a='ls -a --color'
 alias l='ls -l --color'
 alias la='ls -la --color'
 
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
 n ()
 {
     # Block nesting of nnn in subshells
@@ -122,3 +124,5 @@ export PATH="$PATH:/home/finley/.local/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export AVANTE_GEMINI_API_KEY="AIzaSyC1wQM56EXnTqqQxFTpKhlQTGieEXkCtwg"

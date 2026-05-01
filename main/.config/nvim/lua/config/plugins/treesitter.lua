@@ -1,43 +1,44 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-            local configs = require("nvim-treesitter.configs")
+	{
+		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
+		build = ":TSUpdate",
+		config = function()
+			local ts = require("nvim-treesitter")
 
-            configs.setup({
-                ensure_installed = {
-                    "python",
-                    "c",
-                    "cpp",
-                    "java",
-                    "lua",
-                    "vim",
-                    "vimdoc",
-                    "query",
-                    "javascript",
-                    "html",
-                    "css",
-                    "markdown",
-                    "markdown_inline",
-                    "sql",
-                    "go",
-                    "glsl",
-                    "latex",
-                },
-                sync_install = false,
-                highlight = {
-                    enable = true,
-                    disable = { "latex" },
-                },
-                indent = { 
-                    enable = true,
-                    disable = { "html" },
-                },
-            })
-        end,
-    },
+			ts.setup({
+				install_dir = vim.fn.stdpath("data") .. "/site",
+			})
 
-    { "nvim-treesitter/playground" }, -- The tree can be toggled using the command :TSPlaygroundToggle
-    -- { "nvim-treesitter/nvim-treesitter-context" }, -- keeps the context of what method you are in etc.(The intelij feature)
+			ts.install({
+				"lua",
+				"vim",
+				"vimdoc",
+				"query",
+				"python",
+				"javascript",
+				"c",
+				"cpp",
+				"rust",
+				"go",
+				"markdown",
+				"markdown_inline",
+			})
+
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+					if lang then
+						pcall(vim.treesitter.start)
+					end
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
+		end,
+	},
 }
