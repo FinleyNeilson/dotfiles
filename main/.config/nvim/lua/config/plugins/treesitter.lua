@@ -20,6 +20,7 @@ return {
 				"c",
 				"cpp",
 				"rust",
+        "java",
 				"go",
 				"markdown",
 				"markdown_inline",

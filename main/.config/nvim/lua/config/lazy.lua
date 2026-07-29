@@ -18,6 +18,9 @@ vim.deprecate = function() end
 
 -- Setup lazy.nvim
 require("lazy").setup({
+	rocks = {
+		hererocks = true, -- required so lazy.nvim can build the magick LuaRock for image.nvim
+	},
 	spec = {
 		-- import your plugins
 		{ import = "config.plugins" },

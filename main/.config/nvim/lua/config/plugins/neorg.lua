@@ -17,7 +17,7 @@ return {
 					["core.summary"] = {},
 					["core.keybinds"] = {
 						config = {
-							default_keybinds = true,
+							default_keybinds = false,
 						},
 					},
 					["core.journal"] = {

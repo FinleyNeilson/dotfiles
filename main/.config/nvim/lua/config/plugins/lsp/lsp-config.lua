@@ -3,7 +3,12 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				registries = {
+					"github:nvim-java/mason-registry",
+					"github:mason-org/mason-registry",
+				},
+			})
 		end,
 	},
 	-- automatically installs formatters and linters

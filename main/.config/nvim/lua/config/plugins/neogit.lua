@@ -5,6 +5,14 @@ return {
 	-- 	config = true,
 	-- },
 	{
+		"FabijanZulj/blame.nvim",
+		lazy = false,
+		config = function()
+			require("blame").setup({})
+			vim.keymap.set("n", "<leader>tb", ":BlameToggle window<CR>", { desc = "Toggle Git Blame" })
+		end,
+	},
+	{
 		"NeogitOrg/neogit",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required

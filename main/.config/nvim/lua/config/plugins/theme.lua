@@ -81,6 +81,11 @@ return {
 						after = quickscope_highlight("#ddeecc", "#99bbaa"),
 					},
 					{
+						name = "burzum-alt",
+						colorscheme = "burzum-alt",
+						after = quickscope_highlight("#ddeecc", "#99bbaa"),
+					},
+					{
 						name = "rose-pine-moon-prime",
 						colorscheme = "rose-pine-moon",
 						before = [[
@@ -99,21 +104,21 @@ return {
 					-- 	colorscheme = "kanso-zen",
 					-- 	after = quickscope_highlight("#C34043", "#DCA561"),
 					-- },
-					{
-						name = "oldworld",
-						colorscheme = "oldworld",
-						after = quickscope_highlight("#E6B99D", "#90B99F"),
-					},
+					-- {
+					-- 	name = "oldworld",
+					-- 	colorscheme = "oldworld",
+					-- 	after = quickscope_highlight("#E6B99D", "#90B99F"),
+					-- },
 					-- {
 					-- 	name = "kanagawa",
 					-- 	colorscheme = "kanagawa-paper-ink",
 					-- 	after = quickscope_highlight("#A292A3", "#C4B28A"),
 					-- },
-					-- {
-					-- 	name = "hojicha",
-					-- 	colorscheme = "hojicha",
-					-- 	after = quickscope_highlight("#808796", "#8bab85"),
-					-- },
+					{
+						name = "hojicha",
+						colorscheme = "hojicha",
+						after = quickscope_highlight("#808796", "#8bab85"),
+					},
 					-- {
 					-- 	name = "roseprime",
 					-- 	colorscheme = "roseprime",
@@ -169,11 +174,11 @@ return {
 					-- 	colorscheme = "yui_dark",
 					--                    after = quickscope_highlight("#70cf92", "#cfb787"),
 					-- },
-					-- {
-					-- 	name = "yui_light",
-					-- 	colorscheme = "yui_light",
-					-- 	after = quickscope_highlight("#346e27", "#b17900"),
-					-- },
+					{
+						name = "yui_light",
+						colorscheme = "yui_light",
+						after = quickscope_highlight("#346e27", "#b17900"),
+					},
 				},
 			})
 		end,

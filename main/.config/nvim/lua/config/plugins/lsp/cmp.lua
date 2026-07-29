@@ -19,12 +19,7 @@ return {
 			lsp_kind.init({
 				mode = "symbol_text",
 				preset = "codicons",
-				symbol_map = {
-					copilot = "",
-				},
 			})
-
-			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 			local cmp_next = function(fallback)
 				if cmp.visible() then
@@ -65,10 +60,6 @@ return {
 							maxwidth = 50,
 						})(entry, vim_item)
 
-						if entry.source.name == "copilot" then
-							vim_item.kind = " Copilot"
-							vim_item.kind_hl_group = "CmpItemKindCopilot"
-						end
 
 						return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
 					end,
@@ -88,7 +79,6 @@ return {
 					["<C-k>"] = cmp_prev,
 				},
 				sources = {
-					{ name = "copilot", priority = 1000, group_index = 1 },
 					{ name = "nvim_lsp", priority = 750, group_index = 1, max_item_count = 10 },
 					{ name = "nvim_lsp_signature_help", group_index = 1 },
 					{ name = "nvim_lua", group_index = 1 },
@@ -97,7 +87,6 @@ return {
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						require("copilot_cmp.comparators").prioritize,
 						cmp.config.compare.offset,
 						cmp.config.compare.exact,
 						cmp.config.compare.score,

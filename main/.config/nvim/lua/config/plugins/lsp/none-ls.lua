@@ -25,5 +25,8 @@ return {
 			},
 		})
 		vim.keymap.set("n", "<leader><CR>", vim.lsp.buf.format, { desc = "code format space =" })
+
+		-- markdownlint is registered but off by default; toggle with <leader>tm
+		null_ls.disable({ name = "markdownlint" })
 	end,
 }
