@@ -30,6 +30,11 @@ return {
 					"size",
 					-- "mtime",
 				},
+				view_options = {
+					is_hidden_file = function(name, bufnr)
+						return vim.startswith(name, ".") or name == "Session.vim"
+					end,
+				},
 				skip_confirm_for_simple_edits = true,
 			})
 
