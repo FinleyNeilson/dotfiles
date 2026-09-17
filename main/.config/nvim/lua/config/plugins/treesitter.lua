@@ -22,6 +22,7 @@ return {
 				"rust",
         "java",
 				"go",
+				"dart",
 				"markdown",
 				"markdown_inline",
 			})
