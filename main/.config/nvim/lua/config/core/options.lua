@@ -1,5 +1,9 @@
 local opt = vim.opt
 
+-- Force .tex files to be detected as "tex" (LaTeX) rather than falling back
+-- to "plaintex", which vimtex's ft = {"tex"} lazy-load never triggers for.
+vim.g.tex_flavor = "latex"
+
 -- QOL
 opt.updatetime = 250
 opt.timeoutlen = 300

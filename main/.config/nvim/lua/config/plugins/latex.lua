@@ -4,6 +4,11 @@ return {
 	init = function()
 		local sioyek_path = "/mnt/c/Program Files/sioyek-release-windows/sioyek.exe"
 
+		-- Nightly nvim builds (e.g. Ubuntu PPA git snapshots) report themselves as
+		-- "0.12.0-dev" even when far newer than 0.12.4, which trips vimtex's
+		-- has('nvim-0.12.4') version gate and silently disables the plugin.
+		vim.g.vimtex_version_check = 0
+
 		vim.g.vimtex_view_method = "sioyek"
 		vim.g.vimtex_view_sioyek_exe = sioyek_path
 		vim.g.vimtex_compiler_method = "latexmk"
