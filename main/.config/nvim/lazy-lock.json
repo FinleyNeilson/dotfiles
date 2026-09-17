@@ -66,11 +66,13 @@
   "render-markdown.nvim": { "branch": "main", "commit": "f422cb5c6855f150e2ddcfaf44e7157b98b34f6a" },
   "solarized.nvim": { "branch": "main", "commit": "a8085e29883ddcfb39bd46197eb32ef00df05368" },
   "spring-boot.nvim": { "branch": "main", "commit": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0" },
+  "starfall.nvim": { "branch": "main", "commit": "8a4ac3f83b670162a0aebb90ab4cd3ce30e05289" },
   "statuscol.nvim": { "branch": "main", "commit": "887b8a03ea3804628505c9002fd07bd06a3db2e0" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "b25b749b9db64d375d782094e2b9dce53ad53a40" },
   "telescope.nvim": { "branch": "master", "commit": "427b576c16792edad01a92b89721d923c19ad60f" },
   "themery.nvim": { "branch": "main", "commit": "bfa58f4b279d21cb515b28023e1b68ec908584b2" },
+  "tiny-glimmer.nvim": { "branch": "main", "commit": "9a48d8a7436231cb16d47c88f924702e5602870a" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "tree-sitter-norg": { "branch": "main", "commit": "d7edfaf89198aab652c7a1f0f818196efedaccfb" },
   "tree-sitter-norg-meta": { "branch": "main", "commit": "729d4e54fb881ba0ddf0f925ec78401354c7c6db" },
@@ -82,5 +84,6 @@
   "vimtex": { "branch": "master", "commit": "853eb587873a7061a083655578be56dd8027b834" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yui": { "branch": "master", "commit": "5a43193c81aa999f5f77eabb01719141441dba6c" },
-  "zen-mode.nvim": { "branch": "main", "commit": "8564ce6d29ec7554eb9df578efa882d33b3c23a7" }
+  "zen-mode.nvim": { "branch": "main", "commit": "8564ce6d29ec7554eb9df578efa882d33b3c23a7" },
+  "zone.nvim": { "branch": "main", "commit": "fe33ba5b92af340a811822cd8d978695f2141bf9" }
 }
