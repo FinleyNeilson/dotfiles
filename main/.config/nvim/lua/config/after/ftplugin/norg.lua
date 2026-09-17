@@ -1,10 +1,6 @@
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "norg",
 	callback = function()
-		if vim.bo.buftype ~= "" then
-			return
-		end
-
 		vim.opt_local.conceallevel = 2
 		vim.opt_local.colorcolumn = ""
 		vim.g.qs_enable = 0
@@ -39,15 +35,21 @@ vim.api.nvim_create_autocmd("FileType", {
 		)
 		vim.keymap.set(
 			"n",
-			"<leader>or",
-			":Neorg journal tomorrow<CR>",
-			{ buffer = true, desc = "open [j]ournal tomo[r]row" }
+			"<leader>oc",
+			":Neorg journal custom<CR>",
+			{ buffer = true, desc = "[o]pen [c]alendar to pick a journal date" }
 		)
 		vim.keymap.set(
 			"n",
-			"<leader>oy",
-			":Neorg journal yesterday<CR>",
-			{ buffer = true, desc = "open [j]ournal [y]esterday" }
+			"<leader>ot",
+			":Neorg journal toc update<CR>",
+			{ buffer = true, desc = "[o]pen journal [t]able of contents" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>oa",
+			":Neorg journal agenda week<CR>",
+			{ buffer = true, desc = "[o]pen journal [a]genda (week)" }
 		)
 		vim.keymap.set(
 			"n",
@@ -172,5 +174,29 @@ vim.api.nvim_create_autocmd("FileType", {
 			{ silent = true, noremap = true, buffer = true }
 		)
 		vim.keymap.set("n", "gO", "<cmd>Neorg toc<CR>", { silent = true, noremap = true, buffer = true })
+		vim.keymap.set(
+			"n",
+			"]]",
+			"<Plug>(neorg.treesitter.next.heading)",
+			{ silent = true, noremap = true, buffer = true }
+		)
+		vim.keymap.set(
+			"n",
+			"[[",
+			"<Plug>(neorg.treesitter.previous.heading)",
+			{ silent = true, noremap = true, buffer = true }
+		)
+		vim.keymap.set(
+			"n",
+			"]l",
+			"<Plug>(neorg.treesitter.next.link)",
+			{ silent = true, noremap = true, buffer = true }
+		)
+		vim.keymap.set(
+			"n",
+			"[l",
+			"<Plug>(neorg.treesitter.previous.link)",
+			{ silent = true, noremap = true, buffer = true }
+		)
 	end,
 })

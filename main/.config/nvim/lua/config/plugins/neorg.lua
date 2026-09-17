@@ -1,8 +1,7 @@
 return {
 	{
-		"nvim-neorg/neorg",
-		lazy = false,
-		version = "*",
+		"FinleyNeilson/neorg",
+		lazy = false, -- fork's main branch adds `:Neorg journal agenda`; switch back to nvim-neorg/neorg + version = "*" if/when merged upstream
 		config = function()
 			require("neorg").setup({
 				load = {
@@ -11,7 +10,6 @@ return {
 					["core.concealer"] = {
 						config = {
 							icon_preset = "basic", -- basic varied diamond
-							init_open_folds = "never",
 						},
 					},
 					["core.summary"] = {},
@@ -73,6 +71,10 @@ return {
 			require("statuscol").setup({
 				relculright = true,
 				segments = {
+					{
+						sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 1, auto = true },
+						click = "v:lua.ScSa",
+					},
 					{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 				},
