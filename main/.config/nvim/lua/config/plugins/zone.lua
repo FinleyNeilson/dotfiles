@@ -1,10 +1,11 @@
 return {
 	"tamton-aquib/zone.nvim",
+	enabled = false, -- buggy (the plugin calls itself WIP); config kept for reference
 	event = "VeryLazy",
 	opts = {
 		style = "dvd",
 		after = 60, -- Idle timeout
-		exclude_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree", "dashboard", "lazy" },
+		exclude_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree", "dashboard", "lazy", "norg" },
 		-- More options to come later
 
 		treadmill = {
@@ -19,7 +20,7 @@ return {
 		},
 		dvd = {
 			-- text = {"line1", "line2", "line3", "etc"}
-			tick_time = 80,
+			tick_time = 120,
 			-- Opts for Dvd style
 		},
 		-- etc
