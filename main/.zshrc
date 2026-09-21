@@ -127,3 +127,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # opencode
 export PATH=/home/finley/.opencode/bin:$PATH
+
+# hunk
+export PATH=/home/finley/.hunk/bin:$PATH
