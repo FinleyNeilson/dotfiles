@@ -101,6 +101,6 @@ vim.keymap.set("n", "<leader>tl", function()
 end, { desc = "Toggle lualine" })
 
 vim.keymap.set("n", "<leader>T", function()
-	vim.cmd("botright split term://$SHELL")
+	vim.cmd("botright vsplit term://$SHELL")
 end, { desc = "Open terminal split" })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
