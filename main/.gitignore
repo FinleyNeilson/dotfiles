@@ -1,1 +1,5 @@
 .config/nvim/Session.vim
+
+# nushell writes these into its config dir
+.config/nushell/history.*
+.config/nushell/plugin.msgpackz

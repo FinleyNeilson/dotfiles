@@ -1,0 +1,129 @@
+# Pure style, matching ~/.p10k.zsh (p10k-pure, 2 lines, right prompt).
+# Colors are the same 256-color indices p10k uses: grey 242, red 1, yellow 3,
+# blue 4, magenta 5, cyan 6, white 7.
+
+add_newline = false
+
+# 500ms, the default, is not enough for the jj module on a /mnt/c repo: jj
+# snapshots the working copy on every prompt and that costs ~250ms warm over
+# the 9p mount (~20-90ms in a WSL-native repo), so a cold one tripped the
+# timeout warning. This is the ceiling for every custom command's `when` and
+# `command`, not an added delay.
+command_timeout = 2000
+
+# The time and duration are a real right prompt rather than $fill padding.
+# nushell renders the prompt once, before input, so $fill's padding was sized
+# for the old width and wrapped the clock onto a line of its own whenever the
+# terminal was resized; reedline repositions a right prompt on every repaint.
+# nushell/autoload/prompt.nu puts it on the first line and keeps it in the
+# scrollback, since reedline otherwise erases it once a command is accepted.
+#
+# No $character and no trailing $line_break: the second line is nushell's
+# PROMPT_INDICATOR_VI_*, which supplies its own leading newline. starship's nu
+# integration never tells starship which vi keymap is active, so
+# [character].vimcmd_symbol can never fire here; config.nu rebuilds the symbol
+# and its red-on-error colouring. A $line_break left at the end of this format
+# would be trimmed off the prompt string, putting the arrow back on line one.
+format = "$directory${custom.jj}${custom.git}"
+right_format = "$cmd_duration${custom.venv}$username$hostname$time"
+
+# Blue full path, no truncation, like Pure
+[directory]
+style = "4"
+format = "[$path]($style) "
+truncation_length = 0
+truncate_to_repo = false
+
+# Version control: jj info inside a jj repo, git info everywhere else. A jj
+# repo is usually colocated with git, where HEAD is detached at @-, so the git
+# modules would show the parent commit rather than the working-copy change.
+# starship has no jj module and cannot hide built-in modules conditionally, so
+# the git modules are left out of `format` and rendered through custom.git,
+# which only runs outside jj repos.
+#
+# @<change id> (stable across rewrites, unlike the commit hash), any bookmarks
+# on @, '!' for a conflict, '*' when @ has changes, mirroring git's dirty '*'.
+# This snapshots the working copy, as any jj command does, so '*' is current.
+[custom.jj]
+when = "jj root --ignore-working-copy"
+command = '''jj log -r @ --no-graph --color never -T 'separate(" ", "@" ++ change_id.shortest(8), bookmarks.join(" "), if(conflict, "!"), if(!empty, "*"))''''
+shell = ["sh"]
+style = "242"
+format = "[$output]($style) "
+
+[custom.git]
+when = "! jj root --ignore-working-copy && git rev-parse --is-inside-work-tree"
+command = "starship module git_branch; starship module git_commit; starship module git_status"
+shell = ["sh"]
+unsafe_no_escape = true
+format = "$output "
+
+# Grey branch, no icon. Detached HEAD is shown as @hash by git_commit instead,
+# which is what p10k does, and is the normal state in a jj colocated repo.
+[git_branch]
+symbol = ""
+style = "242"
+format = "[$branch]($style) "
+ignore_branches = ["HEAD"]
+
+[git_commit]
+only_detached = true
+tag_disabled = true
+commit_hash_length = 8
+style = "242"
+format = "[@$hash]($style) "
+
+# Grey '*' for dirty state, cyan ahead/behind arrows with no counts. p10k
+# collapses any dirty state into one '*'; starship emits one symbol per
+# category, so several kinds of change at once read as '**' or '***'.
+[git_status]
+style = "242"
+format = '([$all_status]($style)[$ahead_behind](6) )'
+conflicted = "*"
+staged = "*"
+modified = "*"
+renamed = "*"
+deleted = "*"
+typechanged = "*"
+untracked = "*"
+stashed = ""
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇣⇡"
+
+# Yellow, only for commands taking 5s or more, whole seconds
+[cmd_duration]
+min_time = 5000
+show_milliseconds = false
+style = "3"
+format = "[$duration]($style) "
+
+# Grey virtualenv name, never the python version. A custom module rather than
+# [python]: that one scans the directory for python files even with its detect
+# lists emptied, and the scan overruns scan_timeout on /mnt/c (9P is slow),
+# printing a warning above every prompt there. This keys off $VIRTUAL_ENV only.
+[custom.venv]
+when = 'test -n "$VIRTUAL_ENV"'
+command = 'basename "$VIRTUAL_ENV"'
+shell = ["sh"]
+style = "242"
+format = "[$output]($style) "
+
+# user@host, only when root or over SSH
+[username]
+show_always = false
+style_user = "242"
+style_root = "7"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = true
+style = "242"
+format = "[@$hostname]($style) "
+
+# Grey 12-hour clock with seconds
+[time]
+disabled = false
+style = "242"
+time_format = "%I:%M:%S %p"
+format = "[$time]($style)"

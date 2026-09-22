@@ -4,6 +4,13 @@ local opt = vim.opt
 -- to "plaintex", which vimtex's ft = {"tex"} lazy-load never triggers for.
 vim.g.tex_flavor = "latex"
 
+-- Everything nvim runs through 'shell' -- :!, system(), and any plugin that
+-- shells out -- is written in POSIX syntax (&&, 2>/dev/null, $(...)), none of
+-- which nushell parses. So 'shell' stays bash even when $SHELL is nu. The
+-- <leader>T terminal split opens term://$SHELL directly and is unaffected, so
+-- interactive terminals inside nvim are still nu.
+opt.shell = "/bin/bash"
+
 -- QOL
 opt.updatetime = 250
 opt.timeoutlen = 300
