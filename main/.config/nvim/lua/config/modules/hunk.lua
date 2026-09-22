@@ -18,6 +18,17 @@ local function open(args)
 	end
 end
 
+-- Live `hunk diff` args, plus the review notes Claude leaves in
+-- .git/hunk-notes.json when that file exists (same as tmux prefix + g/G)
+local function diff(args)
+	local out = vim.fn.systemlist({ "git", "rev-parse", "--git-path", "hunk-notes.json" })
+	local notes = vim.v.shell_error == 0 and out[1]
+	if notes and vim.uv.fs_stat(notes) then
+		args = vim.list_extend({ "--agent-context", notes }, args)
+	end
+	return vim.list_extend({ "diff", "--watch" }, args)
+end
+
 -- The commit hash on the current line, if in a Neogit buffer and it names a real commit
 local function commit_under_cursor()
 	if not vim.bo.filetype:match("^Neogit") then
@@ -33,23 +44,26 @@ local function commit_under_cursor()
 	end
 end
 
--- The repo's default branch (origin/HEAD), falling back to main
-local function base_branch()
-	local out = vim.fn.systemlist({ "git", "rev-parse", "--abbrev-ref", "origin/HEAD" })
-	if vim.v.shell_error == 0 and out[1] then
-		return out[1]
+-- Everything on this branch since the default branch. Hunk parses targets as
+-- jj revsets in jj repos, so git's `a...b` syntax fails there.
+local function branch_range()
+	vim.fn.system({ "jj", "root" })
+	if vim.v.shell_error == 0 then
+		return "trunk()..@"
 	end
-	return "main"
+	local out = vim.fn.systemlist({ "git", "rev-parse", "--abbrev-ref", "origin/HEAD" })
+	local base = (vim.v.shell_error == 0 and out[1]) or "main"
+	return base .. "...HEAD"
 end
 
 function M.setup()
 	vim.keymap.set("n", "<leader>gd", function()
 		local sha = commit_under_cursor()
-		open(sha and { "show", sha } or { "diff" })
+		open(sha and { "show", sha } or diff({}))
 	end, { desc = "Hunk: commit under cursor, or working tree" })
 
 	vim.keymap.set("n", "<leader>gD", function()
-		open({ "diff", "--watch", base_branch() .. "...HEAD" })
+		open(diff({ branch_range() }))
 	end, { desc = "Hunk: whole branch vs default branch" })
 end
 
