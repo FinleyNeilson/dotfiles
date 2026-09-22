@@ -7,23 +7,7 @@ return {
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard") -- Changed to dashboard theme
 
-		dashboard.section.header.val = {
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                     ]],
-			[[       ████ ██████           █████      ██                     ]],
-			[[      ███████████             █████                             ]],
-			[[      █████████ ███████████████████ ███   ███████████   ]],
-			[[     █████████  ███    █████████████ █████ ██████████████   ]],
-			[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
-			[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-			[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-		}
+    dashboard.section.header.val = require("config.ascii.neovim")
 
 		-- Add vertical padding
 		dashboard.section.header.opts = {
