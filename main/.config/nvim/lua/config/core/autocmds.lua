@@ -34,3 +34,15 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.b.qs_local_disable = 1
 	end,
 })
+
+-- [[ Refresh gitsigns for repos on the Windows filesystem ]]
+-- gitsigns' .git watcher misses changes under /mnt/c in WSL, so the gutter goes
+-- stale after `jj new` and friends. Elsewhere the watcher works, so skip it.
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+	group = vim.api.nvim_create_augroup("GitsignsWslRefresh", { clear = true }),
+	callback = function(args)
+		if vim.api.nvim_buf_get_name(args.buf):match("^/mnt/%a/") then
+			pcall(vim.cmd, "Gitsigns refresh")
+		end
+	end,
+})
