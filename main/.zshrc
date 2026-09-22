@@ -43,6 +43,9 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
+# carapace: completions for ~800 CLIs (jj, git, gh, tmux, ...); must come after compinit
+[[ -x ~/.local/bin/carapace ]] && source <(~/.local/bin/carapace _carapace zsh)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
